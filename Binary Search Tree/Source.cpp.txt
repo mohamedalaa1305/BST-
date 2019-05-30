@@ -1,0 +1,51 @@
+#include<iostream>
+#include <string>
+#include"binary_tree.h"
+using namespace std;
+int main()
+{
+	binary_tree<string> tree;
+	string x;
+	int Number_of_nodes;
+	cout << "Enter the number of nodes : ";
+	cin >> Number_of_nodes;
+	while (Number_of_nodes--)
+	{
+		cin >> x;
+		tree.insert(x);
+	}
+	cout << endl << "Enter the nodes to be deleting\n";
+	
+	char choice_delete = 'n';
+	do {
+		string Data_deleted;
+		cin >> Data_deleted;
+		tree.remove(Data_deleted);
+		cout << "Do you want to delete more ?(y or n) : ";
+		cin >> choice_delete;
+	} while (choice_delete == 'y' || choice_delete == 'Y');
+
+	cout << endl << "Enter the nodes to for searching\n";
+	char choice_search='n';
+	do {
+		string Data_searched;
+		cin >> Data_searched;
+		tree.find(Data_searched);
+	if (tree.find(Data_searched))
+	{
+		cout << "Found" << endl;
+	}
+	else
+	{
+		cout << "Not Found" << endl;
+	}
+		cout << "Do you want to continue : (y or n)";
+		cin >> choice_search;
+	} while (choice_search == 'y' || choice_search == 'Y');
+
+	tree.display();
+	tree.bfsdisplay();
+	tree.~binary_tree();
+	system("Pause");
+	return 0;
+}
